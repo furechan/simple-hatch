@@ -1,0 +1,23 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "simple-hatch"
+version = "0.0.0"
+requires-python = ">=3.7"
+dependencies = [ "click",]
+
+[tool.hatch.build]
+targets.wheel.sources = ["src"]
+dev-mode-dirs = ["src"]
+only-include = ["src"]
+exclude = [".*"]
+
+[tool.other.build]
+sources = ["src"]
+include = ["src/*"]
+
+[tool.pytest.ini_options]
+addopts = [ "-p no:cacheprovider"]
+testpaths = ["tests",]
